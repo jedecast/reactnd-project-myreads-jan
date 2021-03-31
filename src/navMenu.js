@@ -12,7 +12,7 @@ class NavMenu extends Component {
       <NavContainer>
         <h3 style={{fontWeight:'800'}}>MyReads</h3>
         <Link
-          to='/add'
+          to='/search'
           style={{marginLeft:'auto'}}
         >
           <Button onClick={() => clearQuery()}>Add a Book</Button>

@@ -29,7 +29,7 @@ class SearchBook extends Component {
           <SearchBar onChange={(e) => this.handleChange(e)}/>
         </SearchContainer>
         {collection.length === 0
-          ? <p>it's empty</p>
+          ? <EmptyState>Try searching for words like: 'Art', 'Basketball', 'Philosophy', 'React', 'Virtual Reality'</EmptyState>
           : <BooksGrid books={collection} updateBooks={updateBooks}/>}
       </div>
 
@@ -49,6 +49,11 @@ const SearchBar = styled.input`
   height: 56px;
   border-radius: 8px;
   padding: 24px;
+`
+
+const EmptyState = styled.p`
+  text-align: center;
+  color: gray;
 `
 
 

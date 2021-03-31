@@ -26,7 +26,6 @@ class BooksApp extends React.Component {
   }
 
   updateBooks = (id, shelfChange, title, author, imageURL) => {
-    console.log(id, shelfChange, title, author, imageURL)
     BooksAPI.update(id, shelfChange)
       .then(() => {
         this.setState((currentState) => ({
@@ -51,8 +50,10 @@ class BooksApp extends React.Component {
   searchQuery = (query) => {
     BooksAPI.search(query)
       .then((collection) => {
-        console.log(collection.length);
         if (collection.length == undefined) {
+          this.setState(() => ({
+            collection: [],
+          }))
           console.log('hehe its empty')
         } else {
         this.setState((currentState) => ({
@@ -84,7 +85,7 @@ class BooksApp extends React.Component {
 
     return (
       <Container fluid style={{maxWidth: '1440px', marginTop:'124px'}}>
-      <Route path="/add" render={() => (
+      <Route path="/search" render={() => (
         <SearchBooks searchQuery={this.searchQuery} clearQuery={this.clearQuery} collection={this.state.collection} updateBooks={this.updateBooks}/>
         )}
       />

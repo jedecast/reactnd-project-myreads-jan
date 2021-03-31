@@ -16,8 +16,6 @@ class SearchBook extends Component {
     } else {
       this.props.clearQuery();
     }
-    //INSERT CLEARING QUERY
-
   }
 
   render() {

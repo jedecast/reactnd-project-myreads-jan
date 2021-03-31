@@ -25,7 +25,6 @@ class BooksApp extends React.Component {
       })
   }
 
-//send author, title, and image url as well?
   updateBooks = (id, shelfChange, title, author, imageURL) => {
     console.log(id, shelfChange, title, author, imageURL)
     BooksAPI.update(id, shelfChange)
@@ -33,7 +32,6 @@ class BooksApp extends React.Component {
         this.setState((currentState) => ({
           books: [
             ...currentState.books,
-            ///ifstatement to see if the book already exists in my library, if yes, change the shelf, if not add a new book and change the shelf
             currentState.books.find((book) => book.id === id) ?
               currentState.books.find((book) => (
                 book.id === id
@@ -50,12 +48,10 @@ class BooksApp extends React.Component {
     })
   }
 
-////PUT COMMENTS SO I CAN UNDERSTAND THEM IN THE FUTURE ON WHAT EACH LINE DOES
   searchQuery = (query) => {
     BooksAPI.search(query)
       .then((collection) => {
         console.log(collection.length);
-        ///INSERT A BOOLEAN HEre CHECKING FOR NULL/UNDEFINED
         if (collection.length == undefined) {
           console.log('hehe its empty')
         } else {
@@ -64,7 +60,6 @@ class BooksApp extends React.Component {
             ...colBook,
             shelf: currentState.books.find((book) => book.id === colBook.id) ?  currentState.books.find((book) => book.id === colBook.id).shelf  : 'none'
           }))
-          ///HOW TO SYNC w/ STATE?
           }))
         }
       })

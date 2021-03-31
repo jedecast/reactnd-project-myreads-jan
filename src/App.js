@@ -25,22 +25,22 @@ class BooksApp extends React.Component {
       })
   }
 
-  updateBooks = (id, shelfChange, title, author, imageURL) => {
-    BooksAPI.update(id, shelfChange)
+  updateBooks = (bookObj, shelfChange) => {
+    BooksAPI.update(bookObj, shelfChange)
       .then(() => {
         this.setState((currentState) => ({
           books: [
             ...currentState.books,
-            currentState.books.find((book) => book.id === id) ?
+            currentState.books.find((book) => book.id === bookObj.id) ?
               currentState.books.find((book) => (
-                book.id === id
+                book.id === bookObj.id
               )).shelf = shelfChange :
               {
-                id: id,
+                id: bookObj.id,
                 shelf: shelfChange,
-                title: title,
-                authors: [author],
-                imageLinks: { thumbnail: imageURL },
+                title: bookObj.title,
+                authors: [bookObj.author],
+                imageLinks: { thumbnail: bookObj.imageURL },
               }
           ]
         }))

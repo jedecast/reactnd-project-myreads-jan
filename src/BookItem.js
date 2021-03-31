@@ -11,12 +11,15 @@ class BookItem extends Component {
 
   handleChange = (e) => {
     e.preventDefault();
-    const id = this.props.id;
     const shelf = e.target.value;
-    const title = this.props.title;
-    const author = this.props.author;
-    const imageURL = this.props.imageURL;
-    this.props.updateBooks(id, shelf, title, author, imageURL);
+    const book = {
+      id: this.props.id,
+      shelf: e.target.value,
+      title: this.props.title,
+      author: this.props.author,
+      imageURL: this.props.imageURL,
+    }
+    this.props.updateBooks(book, shelf);
   }
 
   render() {
